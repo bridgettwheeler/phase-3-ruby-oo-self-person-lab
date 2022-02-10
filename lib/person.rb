@@ -4,18 +4,36 @@ class Person
 
     def initialize(name)
         @name = name
-      end
-     
-     def initialize(bank_account)
-        @bank_account = $25
-     end 
-
-     def initialize(happiness)
+        @bank_account = 25
         @happiness = 8
-     end
-
-     def initialize(hygiene)
         @hygiene = 8
-     end
+      end
 
+      def happiness=(num)
+        if num > 10
+            @happiness = 10
+        elsif num < 0
+            @happiness = 0
+        else
+            @happiness = num
+        end 
+      end
+
+      def hygiene=(num)
+        if num > 10
+            @hygiene = 10
+        elsif num < 0
+            @hygiene = 0
+        else
+            @hygiene = num
+        end 
+      end
+
+      def person_clean?
+        if @happiness > 7
+            return true
+        else
+            return false
+        end
+    end
 end
