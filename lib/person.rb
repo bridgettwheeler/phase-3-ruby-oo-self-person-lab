@@ -1,12 +1,12 @@
 class Person 
-    attr_reader :name
-    attr_accessor :bank_account, :happiness, :hygiene
+    attr_reader :name, :happiness, :hygiene
+    attr_accessor :bank_account 
 
     def initialize(name)
         @name = name
-        @bank_account = 25
-        @happiness = 8
-        @hygiene = 8
+        self.bank_account = 25
+        self.happiness = 8
+        self.hygiene = 8
       end
 
       def happiness=(num)
@@ -29,11 +29,51 @@ class Person
         end 
       end
 
-      def person_clean?
-        if @happiness > 7
+      def clean?
+        if hygiene > 7
             return true
-        else
+        elsif hygiene < 8
             return false
         end
+    end
+
+    def happy?
+        if happiness > 7
+            return true
+        elsif happiness < 8
+            return false
+        end
+    end
+
+    def get_paid(amount)
+        self.bank_account += amount
+        "all about the benjamins"
+    end
+
+    def take_bath
+        self.hygiene += 4
+        "♪ Rub-a-dub just relaxing in the tub ♫"
+    end
+
+    def work_out
+        self.hygiene -= 3
+        self.happiness += 2
+        "♪ another one bites the dust ♫"
+    end
+
+    def call_friend(friend)
+        @friend = friend
+        self.happiness += 3
+        friend.happiness += 3
+        "Hi #{friend.name}! It's #{self.name}. How are you?"
+
+    end
+
+    def start_conversation(person, topic)
+        @person = person
+        if topic = "politics"
+            self.happiness -= 2
+            person.happiness -= 2
+            returns "blah blah partisan blah lobbyist"
     end
 end
